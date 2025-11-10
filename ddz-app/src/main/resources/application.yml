@@ -1,0 +1,25 @@
+server:
+  port: 8088  # 使用不同端口避免冲突
+  servlet:
+    context-path: /app
+
+spring:
+  application:
+    name: ddz-app
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+  web:
+    resources:
+      static-locations: classpath:/static/
+  mvc:
+    static-path-pattern: /static/**
+
+# 开发环境配置
+logging:
+  level:
+    com.ddz: DEBUG
+    org.springframework.web: DEBUG

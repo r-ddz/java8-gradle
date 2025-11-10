@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">DDZ测试模块</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">DDZ测试平台</a>
+        <a class="btn btn-outline-light" th:href="@{/}">返回首页</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 th:text="${title}">DDZ测试模块</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead" th:text="${message}">欢迎使用DDZ测试平台</p>
+                    <p>版本: <span th:text="${version}">1.0.0</span></p>
+
+                    <div class="mt-4">
+                        <h4>测试功能</h4>
+                        <div class="list-group">
+                            <a th:href="@{/test/api/health}" class="list-group-item list-group-item-action">
+                                健康检查API
+                            </a>
+                            <a th:href="@{/test/api/info}" class="list-group-item list-group-item-action">
+                                服务信息API
+                            </a>
+                            <button id="testIntegration" class="list-group-item list-group-item-action">
+                                集成测试
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="testResult" class="mt-4 alert" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>
+<script>
+    $('#testIntegration').click(function() {
+        $.get('/ddz-test/test/api/info', function(data) {
+            $('#testResult').removeClass('alert-danger')
+                .addClass('alert-success')
+                .html('<strong>测试成功!</strong> ' + JSON.stringify(data))
+                .show();
+        }).fail(function() {
+            $('#testResult').removeClass('alert-success')
+                .addClass('alert-danger')
+                .html('<strong>测试失败!</strong> 服务不可用')
+                .show();
+        });
+    });
+</script>
+</body>
+</html>

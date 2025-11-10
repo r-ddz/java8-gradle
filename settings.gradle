@@ -1,0 +1,8 @@
+rootProject.name = 'java8-gradle'
+
+// 共享模块
+include 'ddz-core'
+// 应用模块
+include 'ddz-app'
+include 'ddz-redis'
+include 'ddz-demo'

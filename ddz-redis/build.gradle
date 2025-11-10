@@ -1,0 +1,16 @@
+dependencies {
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.data:spring-data-commons'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.redisson:redisson-spring-boot-starter:3.23.4'
+}
+
+// 添加测试配置
+test {
+    useJUnitPlatform()
+
+    // 如果需要，可以添加测试过滤
+//    filter {
+//        includeTestsMatching "com.ddz.core.redis.*"
+//    }
+}

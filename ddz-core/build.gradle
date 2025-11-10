@@ -1,0 +1,15 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework.data:spring-data-commons'
+}
+
+// 添加测试配置
+test {
+    useJUnitPlatform()
+
+    // 如果需要，可以添加测试过滤
+//    filter {
+//        includeTestsMatching "com.ddz.core.email.*"
+//    }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">DDZ测试平台</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .feature-list { margin: 20px 0; }
+        .feature-item { padding: 10px; margin: 5px 0; background: #e8f4fd; }
+        .nav { margin: 20px 0; }
+        .nav a { margin-right: 15px; text-decoration: none; color: #0066cc; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1 th:text="${title}">DDZ测试平台</h1>
+    <p th:text="${welcome}">欢迎使用Thymeleaf模板引擎</p>
+</div>
+
+<div class="nav">
+    <a th:href="@{/template/index}">首页</a>
+    <a th:href="@{/template/user/123}">用户资料</a>
+    <a th:href="@{/template/products}">产品列表</a>
+    <a th:href="@{/static/static-demo.html}">静态页面</a>
+</div>
+
+<div class="feature-list">
+    <h3>模板特性展示:</h3>
+    <div th:each="feature : ${features}" class="feature-item">
+        <span th:text="${feature}">特性描述</span>
+    </div>
+</div>
+
+<div>
+    <h3>当前时间:</h3>
+    <p th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}">2024-01-01 12:00:00</p>
+</div>
+
+<div>
+    <h3>访问信息:</h3>
+    <p>服务器端口: <span th:text="${@environment.getProperty('server.port')}">8088</span></p>
+    <p>上下文路径: <span th:text="${@environment.getProperty('server.servlet.context-path')}">/ddz-test</span></p>
+</div>
+</body>
+</html>

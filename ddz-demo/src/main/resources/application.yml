@@ -1,0 +1,8 @@
+server:
+  port: 8088  # 使用不同端口避免冲突
+  servlet:
+    context-path: /demo
+
+spring:
+  application:
+    name: ddz-demo

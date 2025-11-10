@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDZ测试平台 - 静态页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nav a {
+            padding: 10px 20px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .nav a:hover {
+            background: #0052a3;
+        }
+        .info-card {
+            background: #e8f4fd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid #0066cc;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 4px;
+        }
+        .feature::before {
+            content: "✓";
+            color: #00cc66;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>DDZ测试平台 - 静态页面演示</h1>
+        <p>这是一个直接访问的静态HTML文件，无需控制器</p>
+    </div>
+
+    <div class="nav">
+        <a href="/ddz-test/static/static-demo.html">静态首页</a>
+        <a href="/ddz-test/static/about.html">关于我们</a>
+        <a href="/ddz-test/static/help/guide.html">使用指南</a>
+        <a href="/ddz-test/template/index">模板首页</a>
+    </div>
+
+    <div class="info-card">
+        <h2>静态页面特点</h2>
+        <div class="feature">直接通过URL访问，无需后端控制器</div>
+        <div class="feature">加载速度快，服务器压力小</div>
+        <div class="feature">适合展示固定内容</div>
+        <div class="feature">无法动态渲染数据</div>
+    </div>
+
+    <div>
+        <h2>访问路径说明</h2>
+        <p><strong>当前页面URL:</strong> http://localhost:8088/ddz-test/static/static-demo.html</p>
+        <p><strong>文件位置:</strong> src/main/resources/static/static-demo.html</p>
+        <p><strong>上下文路径:</strong> /ddz-test</p>
+        <p><strong>静态资源路径:</strong> /static/</p>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <p>尝试访问其他静态页面：</p>
+        <div class="nav">
+            <a href="/ddz-test/static/about.html">关于页面</a>
+            <a href="/ddz-test/static/help/guide.html">帮助文档</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    console.log('静态页面加载完成');
+    // 静态页面的JavaScript代码
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('页面DOM加载完毕');
+    });
+</script>
+</body>
+</html>
