@@ -1,8 +1,8 @@
 spring:
   mail:
     host: smtp.qq.com
-#    username: xxxxxxxx@qq.com
-#    password: xxxxxxxx # 注意：不是密码，是SMTP授权码
+    username: xxxxxxxx@qq.com
+    password: xxxxxxxx # 注意：不是密码，是SMTP授权码
     port: 587
     default-encoding: UTF-8
     properties:
