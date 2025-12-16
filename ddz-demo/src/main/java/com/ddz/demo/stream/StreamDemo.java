@@ -6,10 +6,76 @@ import java.util.stream.Collectors;
 public class StreamDemo {
 
     public static void main(String[] args) {
+        System.out.println("================================= 开始 =================================");
+
+        // 排序
+        sorted();
+
+        // 获取最大值、最小值
+        getMaxAndMin();
+
         // 根据条件过滤数据，找到第一个满足条件的数据
         findFirst();
+
         // List => Map
         list2map();
+
+        System.out.println("================================= 结束 =================================");
+    }
+
+
+
+
+
+
+
+    /**
+     * 排序
+     */
+    private static void sorted() {
+        int[] arr = {5, 2, 7, 4, 1, 6, 3, 8, 9, 10};
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            list.add(arr[i]);
+        }
+        // 倒序排序存新的list
+        List<Integer> list1 = list.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
+        System.out.println("倒序排序： " + list1);
+
+        // 正序排序存新的list
+        List<Integer> list2 = list.stream()
+                .sorted(Comparator.comparingInt(Integer::intValue))
+                .collect(Collectors.toList());
+        System.out.println("正序排序： " + list2);
+    }
+
+    /**
+     * 获取最大值、最小值
+     */
+    private static void getMaxAndMin() {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) {
+            list.add(arr[i]);
+        }
+        // 获取最大值
+        Optional<Integer> optional = list.stream()
+                .max(Comparator.comparingInt(Integer::intValue));
+        if (optional.isPresent()) {
+            System.out.println("找到数据max： " + optional.get());
+        } else {
+            System.out.println("没有找到max");
+        }
+        // 获取最小值
+        optional = list.stream()
+                .min(Comparator.comparingInt(Integer::intValue));
+        if (optional.isPresent()) {
+            System.out.println("找到数据min： " + optional.get());
+        } else {
+            System.out.println("没有找到min");
+        }
     }
 
     /**
