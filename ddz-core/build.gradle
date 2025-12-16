@@ -2,6 +2,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.springframework:spring-context'
     implementation 'org.springframework.data:spring-data-commons'
+
+    // Jackson核心依赖，版本由上面的ext块统一管理
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "com.fasterxml.jackson.core:jackson-core"
+    implementation "com.fasterxml.jackson.core:jackson-annotations"
+    // 支持XML格式的依赖
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml"
+    // 支持Java 8日期时间API
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
 }
 
 // 添加测试配置
