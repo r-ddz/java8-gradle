@@ -1,8 +1,13 @@
 server:
-  port: 8088  # 使用不同端口避免冲突
+  port: 8099  # 使用不同端口避免冲突
   servlet:
-    context-path: /demo
+    context-path: /ddz
 
 spring:
   application:
     name: ddz-demo
+
+# 激活多配置的两种写法，一般是【spring.profiles.active: dev,test】，下面是列表写法
+spring.profiles.active:
+  - ddz # 统一常量配置
+  - email-smtp-qq-465 # 邮件服务

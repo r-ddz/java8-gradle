@@ -1,0 +1,25 @@
+# QQ邮箱如何通过 SMTP 程序发信
+# 在线文档：https://wx.mail.qq.com/list/readtemplate?name=app_intro.html#/agreement/authorizationCode
+# 注意：发送邮件服务器： smtp.qq.com，使用SSL，端口号465或587
+
+spring.mail:
+    host: smtp.qq.com
+    username: ${DDZ_SMTP_EMAIL_USERNAME}
+    password: ${DDZ_SMTP_EMAIL_PASSWORD}
+    port: 465
+    protocol: smtps # 明确指定协议
+    default-encoding: UTF-8
+    properties:
+      # 邮件发送时是否需要登录验证用户名和密码。提供了用户名和密码默认会开启，可以省略，但显式设置更清晰。只有不需要密码的开放邮件中继服务器才可以设置false（极罕见，现在基本没有）
+      mail.smtps.auth: true
+      mail.smtps.connectiontimeout: 10000 # 连接超时时间（毫秒）
+      mail.smtps.timeout: 5000 # 读取超时时间（毫秒）
+      mail.smtps.writetimeout: 10000 # 写入超时时间（毫秒）
+
+      # 可以省略，SSL会自动启用（因为protocol=smtps且port=465）
+      # mail.smtps.ssl.enable: true
+      # 告诉 JavaMail 信任指定主机的 SSL 证书，即使证书有问题（比如自签名证书、证书域名不匹配等）也继续连接。通常不需要，除非自建邮件服务器才可能用的上，届时可能需要更完善的相关配置
+      # mail.smtps.ssl.trust: smtp.qiye.aliyun.com
+      # 删除 STARTTLS 配置，因为 protocol=smtps 已隐含
+      # mail.smtps.starttls.enable: true
+      # mail.smtps.starttls.required: false

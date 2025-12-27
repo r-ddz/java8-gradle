@@ -1,61 +1,72 @@
-package com.ddz.core.email.service;
+package com.ddz.demo.email.service;
 
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.mail.Mail;
-import cn.hutool.extra.mail.MailAccount;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 
 @Slf4j
 @Service
-public class HutoolEmailService {
+public class SpringEmailService {
 
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Value("${spring.mail.username:}")
+    private String username;
+
+    @Value("${spring.mail.from:}")
+    private String from;
+
+    /**
+     * 发送邮件 Demo
+     * @return
+     */
     public void sendEmailDemo() {
-
         // 附件
         File file = new File("C:\\Users\\74066\\Desktop\\测试文件1.pdf");
+        String fileName = "测试文件1.pdf";
 
+        MimeMessage message = mailSender.createMimeMessage();
         try {
-            // 创建MailAccount实例，指定配置文件路径
-//            MailAccount account = new MailAccount("config/mail.setting");
-            MailAccount account = new MailAccount(MailAccount.MAIL_SETTING_PATHS[0]);
-            // 另一种方式：通过代码设置SMTP服务器、端口、发件人、授权码等信息 【这种方式可以配合config对象从yaml里拿取配置】
-//            account.setHost("smtp.qq.com");
-//            account.setPort(465);
-//            account.setAuth(true);
-//            account.setFrom("your-email@qq.com");
-//            account.setUser("your-email@qq.com"); // 通常是发件邮箱
-//            account.setPass("你的SMTP授权码"); // 注意是授权码而非邮箱密码[citation:2]
-//            account.setSslEnable(true);
-
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
+            // 设置发件人
+            helper.setFrom(StrUtil.isNotBlank(from) ? from : username);
+            // 收件人，可以添加多个，add方法可以一个个追加
+            helper.setTo("xxxxxxx@qq.com");
+            // 抄送
+//            helper.setCc("xxxxxxx@qq.com");
+            // 密送
+//            helper.setBcc("xxxxxxx@qq.com");
+            // 主题
+            helper.setSubject("邮件标题");
+            // 内容，将图片转换为Base64嵌入html
+            helper.setText(buildHtmlEmailText("九州通", "static/images/jzt_logo.png"), true);
+            // 附件
+            helper.addAttachment(fileName, file);
             // 发送邮件
-            Mail mail = Mail.create(account)
-                    // 收件人
-                    .setTos("596675559@qq.com")
-                    // 抄送
-//                    .setCcs("xxxxxxxxx@qq.com")
-                    // 密送
-//                    .setBccs("xxxxxxxxxxx@qq.com")
-                    // 主题
-                    .setTitle("邮件hutool标题")
-                    // 内容，将图片转换为Base64嵌入html
-                    .setContent(buildHtmlEmailText("九州通hutool测试", "static/images/jzt_logo.png")).setHtml(true)
-                    // 附件
-                    .setFiles(file);
-            // 发邮件
-            mail.send();
-        } catch (Exception e) {
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            log.error("【发送邮件】构建 helper 异常 => {}", e.getMessage(), e);
+        } catch (MailException e) {
             log.error("【发送邮件】发生异常 => {}", e.getMessage(), e);
         } finally {
             // 临时文件尝试自动清理
 //            tryDeleteFile(file);
         }
+        log.info("【SpringEmailService】发送邮件成功");
     }
 
     /**

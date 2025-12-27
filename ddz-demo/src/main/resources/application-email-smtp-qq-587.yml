@@ -1,0 +1,25 @@
+# QQ邮箱如何通过 SMTP 程序发信
+# 在线文档：https://wx.mail.qq.com/list/readtemplate?name=app_intro.html#/agreement/authorizationCode
+# 注意：发送邮件服务器： smtp.qq.com，使用SSL，端口号465或587
+
+spring.mail:
+    host: smtp.qq.com
+    username: ${DDZ_SMTP_EMAIL_USERNAME}
+    password: ${DDZ_SMTP_EMAIL_PASSWORD}
+    port: 587
+    default-encoding: UTF-8
+    properties:
+      # 邮件发送时是否需要登录验证用户名和密码。提供了用户名和密码默认会开启，可以省略，但显式设置更清晰。只有不需要密码的开放邮件中继服务器才可以设置false（极罕见，现在基本没有）
+      mail.smtp.auth: true
+      # 尝试使用 STARTTLS 进行加密，如果为 false 则完全禁用 STARTTLS
+      mail.smtp.starttls.enable: true
+      # 不强制，因为有些旧服务器不支持。只有当 enable: true 时才有意义。如果为 true：必须成功升级 STARTTLS，否则连接失败。如果为 false：尝试 STARTTLS，失败后继续明文连接。（一般在推荐的安全端口例如 587 的时候才会考虑设置 true）
+      mail.smtp.starttls.required: true
+      mail.smtp.connectiontimeout: 10000 # 连接超时时间（毫秒）
+      mail.smtp.timeout: 5000 # 读取超时时间（毫秒）
+      mail.smtp.writetimeout: 10000 # 写入超时时间（毫秒）
+
+# STARTTLS 是什么？
+# STARTTLS 是一种加密协议，它可以在已有的明文连接基础上升级为加密连接
+# 与直接 SSL 连接（端口 465）不同，STARTTLS 通常用在端口 25 或 587
+# 工作流程：建立连接 → 发送 STARTTLS 命令 → 升级为 TLS 加密

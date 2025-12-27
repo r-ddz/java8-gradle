@@ -1,4 +1,4 @@
-package com.ddz.core.email;
+package com.ddz.demo.email;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

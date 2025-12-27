@@ -1,0 +1,5 @@
+# 声明变量
+
+# 邮箱服务的 账号 密码
+DDZ_SMTP_EMAIL_USERNAME: xxxxxxxx@qq.com
+DDZ_SMTP_EMAIL_PASSWORD: xxxxxxxxxxxxxxx # 注意：不是密码，是SMTP授权码

@@ -1,7 +1,7 @@
-package com.ddz.core.email;
+package com.ddz.demo.email;
 
-import com.ddz.core.email.service.HutoolEmailService;
-import com.ddz.core.email.service.SpringEmailService;
+import com.ddz.demo.email.service.HutoolEmailService;
+import com.ddz.demo.email.service.SpringEmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
