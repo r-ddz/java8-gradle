@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 定义属性变量 -->
+    <property name="LOG_PATTERN_CONSOLE" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta(${PID:- }) --- [%15.15thread] [%16.16X{traceId}] %cyan(%-40.40logger{39}) : %msg%n" />
+
+    <!-- 控制台输出 - 使用带颜色的格式 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN_CONSOLE}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 异步控制台输出（提升性能） -->
+    <appender name="ASYNC_CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>256</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="CONSOLE" />
+    </appender>
+
+    <!-- 设置第三方库的日志级别，避免过多日志 -->
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.connection" level="OFF"/>
+    <logger name="jdbc.sqltiming" level="INFO"/>
+    <logger name="org.springframework.web.filter" level="INFO"/>
+    <logger name="org.springframework.cloud" level="INFO"/>
+    <logger name="org.springframework.core.env" level="INFO"/>
+    <logger name="org.springframework.boot" level="INFO"/>
+    <logger name="org.springframework.boot.actuate" level="WARN"/>
+    <logger name="org.springframework.boot.context" level="INFO"/>
+    <logger name="org.springframework.boot.autoconfigure" level="INFO"/>
+    <logger name="org.springframework.cache.interceptor.CacheErrorHandler" level="WARN"/>
+    <logger name="org.springframework.boot.web.embedded.tomcat.TomcatStarter" level="WARN"/>
+    <logger name="org.apache.kafka.common.errors.TimeoutException" level="WARN"/>
+    <logger name="org.apache.shiro.session.mgt.AbstractValidatingSessionManager" level="WARN"/>
+    <logger name="org.apache.curator.ConnectionState" level="WARN"/>
+    <logger name="druid.sql.Statement" level="DEBUG"/>
+    <logger name="com.alibaba.druid.pool.DruidDataSource" level="WARN"/>
+    <logger name="com.alibaba.druid.pool.PreparedStatementPool" level="WARN"/>
+    <logger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" level="WARN"/>
+    <logger name="com.jzt.wotu.cache.redis.WotuCacheErrorHandler" level="WARN"/>
+    <logger name="io.elasticjob.lite.event.rdb.JobEventRdbStorage" level="WARN"/>
+    <logger name="org.apache.catalina.core" level="WARN"/>
+    <logger name="org.apache.juli.logging.DirectJDKLog" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC_CONSOLE" />
+    </root>
+
+</configuration>
