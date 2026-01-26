@@ -1,0 +1,13 @@
+package com.ddz.demo.thread;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
+
+@EnableAsync // 启用异步
+@SpringBootApplication
+public class DemoThreadApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoThreadApplication.class, args);
+    }
+}
