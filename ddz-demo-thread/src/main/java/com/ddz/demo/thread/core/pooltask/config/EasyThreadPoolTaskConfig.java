@@ -1,5 +1,6 @@
 package com.ddz.demo.thread.core.pooltask.config;
 
+import com.ddz.demo.thread.common.policy.RejectPolicyFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -66,6 +67,16 @@ public class EasyThreadPoolTaskConfig {
         // 6. 是否允许核心线程超时 - 核心线程空闲时是否可以被回收
         //    对应YAML: spring.task.execution.pool.allow-core-thread-timeout
         executor.setAllowCoreThreadTimeOut(allowCoreThreadTimeOut);
+
+        // 7. 拒绝策略 - YAML无法配置，必须通过代码设置
+        //    ThreadPoolExecutor提供了4种内置策略：
+        //    - AbortPolicy（默认）：抛出RejectedExecutionException
+        //    - CallerRunsPolicy：由调用线程执行任务
+        //    - DiscardPolicy：直接丢弃任务
+        //    - DiscardOldestPolicy：丢弃队列中最老的任务
+        //    - 也可以自定义拒绝策略
+
+        executor.setRejectedExecutionHandler(RejectPolicyFactory.callerRunsPolicy());
 
         executor.initialize();
 

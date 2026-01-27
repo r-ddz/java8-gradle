@@ -17,19 +17,19 @@ spring:
       # 多个线程池配置（Spring Boot 2.1+）
       pools:
         # 默认池（@Async不指定名称时使用）
-        default:
+        defTask:
           core-size: 8
           max-size: 32
           queue-capacity: 128
           thread-name-prefix: "def-task-"
-          keep-alive: 30s
+          keep-alive: 60
           allow-core-thread-timeout: false
         
         # 自定义池（可通过@Async("bigTaskPool")使用）
-        bigTaskPool:
-          core-size: 2
+        bigTask:
+          core-size: 4
           max-size: 8
           queue-capacity: 32
           thread-name-prefix: "big-task-"
-          keep-alive: 600s
+          keep-alive: 300
           allow-core-thread-timeout: true

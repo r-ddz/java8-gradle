@@ -19,9 +19,13 @@ public class DemoPoolTaskExecutorService {
         log.info("【测试默认线程池 def-task 】 任务下标：{}", i);
     }
 
-//    @Async("bigTaskPool")
-//    public void test2() {
-//        log.info("【测试大任务线程池 big-task】");
-//    }
-
+    @Async("bigTask")
+    public void test2(int i) {
+        // 阻塞500毫秒
+        try {
+            Thread.sleep(500);
+        } catch (Exception ignored) {
+        }
+        log.info("【测试默认线程池 big-task 】 任务下标：{}", i);
+    }
 }
