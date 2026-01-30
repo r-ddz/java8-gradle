@@ -79,7 +79,7 @@ public class MultipleThreadPoolTaskConfig {
         executor.setThreadNamePrefix(bigTaskThreadNamePrefix);
         executor.setKeepAliveSeconds(bigTaskKeepAliveSeconds);
         executor.setAllowCoreThreadTimeOut(bigTaskAllowCoreThreadTimeOut);
-        executor.setRejectedExecutionHandler(new MonitoringCallerRunsPolicy("bigTask"));
+        executor.setRejectedExecutionHandler(new MonitoringCallerRunsPolicy("bigTask", true));
         executor.initialize();
         log.info("ThreadPoolTaskExecutor 初始化完成: core={}, max={}, queue={}, prefix={}",
                 bigTaskCorePoolSize, bigTaskMaxPoolSize, bigTaskQueueCapacity, bigTaskThreadNamePrefix);
