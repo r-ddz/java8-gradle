@@ -124,10 +124,10 @@ public class MonitoringCallerRunsPolicy extends ThreadPoolExecutor.CallerRunsPol
                 executor.getMaximumPoolSize());
     }
 
-    private void severeWarnLog(ThreadPoolExecutor executor, int count, long time) {
+    private void severeWarnLog(ThreadPoolExecutor executor, int count, long gapTime) {
         log.warn("【线程池预警 - 严重警告】线程池[{}]触发拒绝策略,集中在{}毫秒内触发了{}次，，当前状态: 活跃线程数={}, 队列大小={}, 最大线程数={}",
                 threadPoolName,
-                time,
+                gapTime,
                 count,
                 executor.getActiveCount(),
                 executor.getQueue().size(),
