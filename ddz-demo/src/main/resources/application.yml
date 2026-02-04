@@ -6,6 +6,10 @@ server:
 spring:
   application:
     name: ddz-demo
+  servlet:
+    multipart:
+      max-file-size: 10MB   # 单个文件最大
+      max-request-size: 50MB # 单个请求最大,限制整个请求（如多个文件+表单数据）的总大小。
 
 # 激活多配置的两种写法，一般是【spring.profiles.active: dev,test】，下面是列表写法
 spring.profiles.active:

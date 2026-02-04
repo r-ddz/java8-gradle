@@ -27,7 +27,7 @@ public class LoggingInterceptor  implements Interceptor {
 
         // 记录响应信息
         log.debug("响应: {} {}，状态码: {}，耗时: {}ms",
-                request.method(),
+                response.body().string(),
                 request.url(),
                 response.code(),
                 elapsedTime);

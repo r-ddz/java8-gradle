@@ -1,25 +1,6 @@
-plugins {
-    id 'java'
-    id 'io.spring.dependency-management' version '1.1.0' // 依赖管理插件
-    id 'org.springframework.boot' version '2.7.0'
-}
 
-allprojects {
-    group = 'com.ddz'
-    version = '1.0.0-SNAPSHOT'
-
-    // 配置仓库源
-    repositories {
-        mavenLocal()
-        maven { url 'https://maven.aliyun.com/repository/public' } // 阿里云镜像加速
-        mavenCentral()
-    }
-}
 
 dependencies {
-    // Lombok 配置（如果需要）
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
 
 
     // Spring Boot 基础依赖

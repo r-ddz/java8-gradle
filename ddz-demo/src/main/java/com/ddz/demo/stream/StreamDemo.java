@@ -1,30 +1,40 @@
 package com.ddz.demo.stream;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         System.out.println("================================= 开始 =================================");
 
-        // List => Map
-        list2map();
-        // 对象转换 List<obj1> => List<obj2>
-        list2list();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = formatter.parse("2025-12-18 11:28:07");
+        System.out.println(date);
 
-        // 找到所有满足条件的数据
-        findAll();
-        // 根据条件过滤数据，找到第一个满足条件的数据
-        findFirst();
 
-        // 排序
-        sorted();
-        // 获取最大值、最小值
-        getMaxAndMin();
 
-        // 是否存在
-        isExist();
+
+
+//        // List => Map
+//        list2map();
+//        // 对象转换 List<obj1> => List<obj2>
+//        list2list();
+//
+//        // 找到所有满足条件的数据
+//        findAll();
+//        // 根据条件过滤数据，找到第一个满足条件的数据
+//        findFirst();
+//
+//        // 排序
+//        sorted();
+//        // 获取最大值、最小值
+//        getMaxAndMin();
+//
+//        // 是否存在
+//        isExist();
 
         System.out.println("================================= 结束 =================================");
     }

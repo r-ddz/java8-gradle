@@ -81,8 +81,9 @@ public class OkHttpUtil {
     public void destroy() {
         if (okHttpClient != null) {
             // 关闭连接池，释放资源
-            okHttpClient.dispatcher().executorService().shutdown();
+            okHttpClient.dispatcher().cancelAll();
             okHttpClient.connectionPool().evictAll();
+            okHttpClient.dispatcher().executorService().shutdown();
             log.info("OkHttpClient资源已释放");
         }
     }

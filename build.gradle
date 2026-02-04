@@ -9,7 +9,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
+//    gradlePluginPortal()
 }
 
 // 2. 所有项目（包括根项目）的通用配置
@@ -30,6 +30,7 @@ subprojects {
     // 应用 Java 插件
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
 
     // Java 版本配置
     sourceCompatibility = '1.8'
@@ -41,16 +42,16 @@ subprojects {
     }
 
     // 测试配置
-    test {
-        useJUnitPlatform()
-    }
+//    test {
+//        useJUnitPlatform()
+//    }
 
     // 4. 使用 Spring Boot BOM 统一管理依赖版本
     dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:2.7.18"
-            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.0.1.0"
-        }
+//        imports {
+//            mavenBom "org.springframework.boot:spring-boot-dependencies:2.7.18"
+//            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.0.1.0"
+//        }
         dependencies {
             dependency 'cn.hutool:hutool-all:5.8.1'
         }
@@ -58,29 +59,30 @@ subprojects {
 
     // 5. 所有子模块的通用依赖
     dependencies {
-        // Spring Boot 基础依赖
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        // Lombok 配置（如果需要）
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+//        // Spring Boot 基础依赖
+//        implementation 'org.springframework.boot:spring-boot-starter-web'
+//        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+//        implementation 'org.springframework.boot:spring-boot-starter-validation'
         // 工具
         implementation 'cn.hutool:hutool-all'
         // 测试框架
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         testImplementation 'org.junit.jupiter:junit-jupiter-api'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-        // Lombok 配置（如果需要）
-        compileOnly 'org.projectlombok:lombok'
-        annotationProcessor 'org.projectlombok:lombok'
+//        testCompileOnly 'org.projectlombok:lombok'
+//        testAnnotationProcessor 'org.projectlombok:lombok'
     }
 }
 
 // 应用模块的特殊配置【这种配置适用于那些既需要Spring Boot功能又需要特殊打包配置的应用程序模块，而不是普通的库或工具模块。】
-configure([project(':ddz-demo'), project(':ddz-app')]) {
-    apply plugin: 'org.springframework.boot'
-
-    bootJar {
-        archiveFileName = "${project.name}.jar"
-    }
-}
+//configure([project(':ddz-demo'), project(':ddz-app')]) {
+//    apply plugin: 'org.springframework.boot'
+//
+//    bootJar {
+//        archiveFileName = "${project.name}.jar"
+//    }
+//}
 

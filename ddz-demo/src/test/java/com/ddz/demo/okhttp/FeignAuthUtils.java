@@ -153,6 +153,7 @@ public class FeignAuthUtils {
 
 
     public static void main(String[] args) {
-        System.out.println(validateAuthToken(generateAuthToken()));
+        System.out.println(generateAuthToken());
+//        System.out.println(validateAuthToken(generateAuthToken()));
     }
 }

@@ -1,8 +1,4 @@
-plugins {
-    id 'org.springframework.boot'
-    id 'io.spring.dependency-management'
-    id 'java'
-}
+
 
 dependencies {
     // 依赖其他业务模块（后续按需引入）
@@ -15,7 +11,11 @@ dependencies {
     // okhttp3
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
 
-    // 邮件
+
+    implementation fileTree(dir: 'libs')
+
+
+            // 邮件
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 
     // 开发工具
