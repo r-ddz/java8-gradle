@@ -2,6 +2,8 @@
 
 dependencies {
 
+    // Spring Boot 基础依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 
 
     // 依赖的其他模块（后续按需引入）

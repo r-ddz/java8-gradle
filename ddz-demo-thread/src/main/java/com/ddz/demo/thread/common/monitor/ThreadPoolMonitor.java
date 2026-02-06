@@ -50,10 +50,10 @@ public class ThreadPoolMonitor {
 //        Metrics.gauge("threadpool.pool.size", poolName).set(poolSize);
 
         // 检查告警条件
-        if (queueSize > executor.getQueueCapacity() * 0.8) {
-            log.warn("线程池[{}]队列使用率超过80%: {}/{}",
-                    poolName, queueSize, executor.getQueueCapacity());
-        }
+//        if (queueSize > executor.getQueueCapacity() * 0.8) {
+//            log.warn("线程池[{}]队列使用率超过80%: {}/{}",
+//                    poolName, queueSize, executor.getQueueCapacity());
+//        }
 
         if (activeCount == executor.getMaxPoolSize()) {
             log.error("线程池[{}]线程已耗尽，需要扩容!", poolName);
