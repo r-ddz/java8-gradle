@@ -42,9 +42,9 @@ subprojects {
     }
 
     // 测试配置
-//    test {
-//        useJUnitPlatform()
-//    }
+    test {
+        useJUnitPlatform()
+    }
 
     // 4. 使用 Spring Boot BOM 统一管理依赖版本
     dependencyManagement {

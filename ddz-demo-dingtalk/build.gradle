@@ -1,0 +1,10 @@
+
+dependencies {
+
+    // Spring Boot 基础依赖
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 钉钉服务SDK
+    implementation("com.aliyun:alibaba-dingtalk-service-sdk:2.0.0")
+    implementation("commons-codec:commons-codec:1.11")
+}
