@@ -14,6 +14,13 @@ import javax.crypto.spec.SecretKeySpec;
 import java.net.URLEncoder;
 import java.util.Arrays;
 
+/**
+ * 钉钉消息发送工具类
+ *
+ * 在线文档：https://open.dingtalk.com/document/dingstart/group-template-robot-sends-group-chat-message
+ *
+ * @author ddz
+ */
 @Slf4j
 public class DingTalkUtil {
 
