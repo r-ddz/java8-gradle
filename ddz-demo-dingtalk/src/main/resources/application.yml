@@ -1,0 +1,21 @@
+server:
+  port: 8099  # 使用不同端口避免冲突
+  servlet:
+    context-path: /ddz
+
+spring:
+  application:
+    name: ddz-dingtalk
+
+ddz:
+  demo:
+    ding-talk-config:
+      robot:
+        # 机器人1 普通群
+        robot1:
+          secret: SEC225a1a9f8ecfb6169a086eb8c4f49b768e7b4defbbfd92f447327a21cf767eea
+          token: 8a75234acfe48e03a927b80c5c1ff3e05709dc67ca9f7a68ea18e2a8cd34a6b0
+        # 机器人2 内部群
+        robot2:
+          secret: SECeeaf158057195cb3c3e1007422ef9f5fa38193546aa7c10799c0bbfd759a4b32
+          token: e7488672d2f5cf7aee06e4d3daa811e11c66335a74a92938ec8c7fb882e67003

@@ -1,4 +1,4 @@
-package com.ddz.demo.dingtalk;
+package com.ddz.demo.dingtalk.utils;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
@@ -22,7 +22,7 @@ import java.util.Arrays;
  * @author ddz
  */
 @Slf4j
-public class DingTalkTool {
+public class DingTalkUtil {
 
     private static final String SERVER_URL = "https://oapi.dingtalk.com/robot/send";
     private static final String CHARSET_NAME = "UTF-8";
@@ -33,11 +33,11 @@ public class DingTalkTool {
     private final OapiRobotSendRequest request;
     private final OapiRobotSendRequest.At requestAt;
 
-    public static DingTalkTool create(String secret, String accessToken) {
-        return new DingTalkTool(secret, accessToken);
+    public static DingTalkUtil create(String secret, String accessToken) {
+        return new DingTalkUtil(secret, accessToken);
     }
 
-    private DingTalkTool(String secret, String accessToken) {
+    private DingTalkUtil(String secret, String accessToken) {
         this.secret = secret;
         this.accessToken = accessToken;
         this.request = new OapiRobotSendRequest();
@@ -65,7 +65,7 @@ public class DingTalkTool {
         }
     }
 
-    public DingTalkTool markdown(String title, String text) {
+    public DingTalkUtil markdown(String title, String text) {
         this.request.setMsgtype("markdown");
         OapiRobotSendRequest.Markdown markdown = new OapiRobotSendRequest.Markdown();
         markdown.setTitle(title);
@@ -74,12 +74,12 @@ public class DingTalkTool {
         return this;
     }
 
-    public DingTalkTool markdown(String title, String template, Object... params) {
+    public DingTalkUtil markdown(String title, String template, Object... params) {
         String text = StrUtil.format(template, params);
         return markdown(title, text);
     }
 
-    public DingTalkTool text(String content) {
+    public DingTalkUtil text(String content) {
         this.request.setMsgtype("text");
         OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
         text.setContent(content);
@@ -87,12 +87,12 @@ public class DingTalkTool {
         return this;
     }
 
-    public DingTalkTool text(String template, Object... params) {
+    public DingTalkUtil text(String template, Object... params) {
         String content = StrUtil.format(template, params);
         return text(content);
     }
 
-    public DingTalkTool link(String title, String messageUrl, String text) {
+    public DingTalkUtil link(String title, String messageUrl, String text) {
         this.request.setMsgtype("link");
         OapiRobotSendRequest.Link link = new OapiRobotSendRequest.Link();
         link.setTitle(title);
@@ -102,12 +102,12 @@ public class DingTalkTool {
         return this;
     }
 
-    public DingTalkTool atAll() {
+    public DingTalkUtil atAll() {
         this.requestAt.setIsAtAll(true);
         return this;
     }
 
-    public DingTalkTool atUser(String... userIds) {
+    public DingTalkUtil atUser(String... userIds) {
         if (CollUtil.isEmpty(requestAt.getAtUserIds())) {
             this.requestAt.setAtUserIds(new java.util.ArrayList<String>());
         }
@@ -115,12 +115,12 @@ public class DingTalkTool {
         return this;
     }
 
-    public DingTalkTool setAtUserIds(String... userIds) {
+    public DingTalkUtil setAtUserIds(String... userIds) {
         this.requestAt.setAtUserIds(Arrays.asList(userIds));
         return this;
     }
 
-    public DingTalkTool atMobile(String... mobiles) {
+    public DingTalkUtil atMobile(String... mobiles) {
         if (CollUtil.isEmpty(requestAt.getAtMobiles())) {
             this.requestAt.setAtMobiles(new java.util.ArrayList<String>());
         }
@@ -128,7 +128,7 @@ public class DingTalkTool {
         return this;
     }
 
-    public DingTalkTool setAtMobiles(String... mobiles) {
+    public DingTalkUtil setAtMobiles(String... mobiles) {
         this.requestAt.setAtMobiles(Arrays.asList(mobiles));
         return this;
     }

@@ -1,5 +1,6 @@
 package com.ddz.demo.dingtalk;
 
+import com.ddz.demo.dingtalk.utils.DingTalkUtil;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
