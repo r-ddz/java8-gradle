@@ -9,7 +9,7 @@ public class NullDingTalkHelper implements DingTalkHelper{
 
     @Override
     public void send() {
-        log.debug("【钉钉】空对象：无法发送消息，因为 Helper 创建失败");
+        log.error("【钉钉】空对象：无法发送消息，因为 Helper 创建失败");
     }
 
     @Override
