@@ -58,12 +58,10 @@ public class DingTalkUtil {
             this.request.setAt(this.requestAt);
             OapiRobotSendResponse rsp = client.execute(this.request, this.accessToken);
             if (!rsp.isSuccess()) {
-                log.error("发送钉钉消息失败 errcode：{} errmsg: {}", rsp.getErrcode(), rsp.getErrmsg());
                 log.error("发送钉钉消息失败：{}", rsp.getBody());
             }
         } catch (Exception e) {
             log.error("发送钉钉消息失败", e);
-            log.error("出现异常", e);
         }
     }
 
