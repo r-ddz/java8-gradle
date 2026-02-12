@@ -2,11 +2,6 @@ package com.ddz.demo.dingtalk.helper;
 
 public interface DingTalkHelper {
 
-    String SERVER_URL = "https://oapi.dingtalk.com/robot/send";
-    String CHARSET_NAME = "UTF-8";
-    String SIGN_ALGORITHMS = "HmacSHA256";
-
-
     void send();
 
     DingTalkHelper markdown(String title, String text);

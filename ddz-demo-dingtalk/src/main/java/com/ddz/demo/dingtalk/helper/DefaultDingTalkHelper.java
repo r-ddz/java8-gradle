@@ -18,6 +18,11 @@ import java.util.Arrays;
 @Slf4j
 @Data
 public class DefaultDingTalkHelper implements DingTalkHelper{
+
+    private static final String SERVER_URL = "https://oapi.dingtalk.com/robot/send";
+    private static final String CHARSET_NAME = "UTF-8";
+    private static final String SIGN_ALGORITHMS = "HmacSHA256";
+
     private String secret;
     private String accessToken;
     private OapiRobotSendRequest request;
