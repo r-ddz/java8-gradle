@@ -2,13 +2,16 @@ package com.ddz.demo.hutool;
 
 import cn.hutool.core.util.StrUtil;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class JoinDemo {
 
 
     public static void main(String[] args) {
         System.out.println("================================= 测试开始 =================================");
         // 截取字符串，从前面开始截取
-        join();
+        join2();
         System.out.println("================================= 测试结束 =================================");
     }
 
@@ -29,6 +32,14 @@ public class JoinDemo {
         System.out.println(String.join(",", "A", "B"));
         System.out.println(String.join(",", "A", "A", "B"));
 
+    }
+
+    public static void join2(){
+        List<String> list = Arrays.asList("A11111", "B22222", "C33333");
+
+
+        System.out.println(String.join(",", list));
+        System.out.println(String.join("\n", list));
 
     }
 
