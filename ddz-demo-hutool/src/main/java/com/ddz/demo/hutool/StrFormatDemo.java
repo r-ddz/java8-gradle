@@ -12,7 +12,7 @@ public class StrFormatDemo {
         format();
 
 
-
+        // 测试
 
         System.out.println("================================= 测试结束 =================================");
     }
