@@ -28,8 +28,8 @@ public class CronUtilTests {
 
     @Test
     public void getNextDates() {
-        String cronStr = "0/30 * * * * ?";
-        List<Date> dates = CronUtil.getNextDates(cronStr, 5);
+        String cronStr = "47 0 0/1 * * ?";
+        List<Date> dates = CronUtil.getNextDates(cronStr, 50);
         dates.forEach(date -> System.out.println(DateUtil.format(date, "yyyy-MM-dd HH:mm:ss")));
 
     }

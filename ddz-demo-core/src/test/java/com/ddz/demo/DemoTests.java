@@ -1,3 +1,5 @@
+package com.ddz.demo;
+
 import com.ddz.demo.core.model.data.UserDemo;
 import com.ddz.demo.core.model.data.UserDemoFactory;
 import org.junit.jupiter.api.Test;

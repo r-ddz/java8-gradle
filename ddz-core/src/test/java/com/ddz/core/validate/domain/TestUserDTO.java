@@ -1,11 +1,11 @@
 package com.ddz.core.validate.domain;
 
 import com.ddz.core.validate.annotation.ValidMobile;
-import lombok.Data;
+//import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
-@Data
+//@Data
 public class TestUserDTO {
 
     @NotNull(message = "code 不能为空")
