@@ -1,24 +1,19 @@
-package com.ddz.demo.core.util;
+package com.ddz.demo.core.utils.time;
 
-import com.ddz.demo.core.model.data.UserDemo;
-import com.ddz.demo.core.model.data.UserDemoFactory;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-public class DateUtilTests {
-
+public class TimeUnitUtilTests {
     @Test
     public void daysToSeconds() {
-        long a = DateUtil.daysToSeconds(1L);
+        long a = TimeUnitUtil.daysToSeconds(1L);
         System.out.println(a);
     }
 
     @Test
     public void hoursToSeconds() {
-        long a = DateUtil.hoursToSeconds(2L);
+        long a = TimeUnitUtil.hoursToSeconds(2L);
         System.out.println(a);
     }
 
@@ -32,5 +27,4 @@ public class DateUtilTests {
     public static void afterAll() {
         System.out.println("================================= 测试结束 =================================");
     }
-
 }
